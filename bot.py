@@ -5,7 +5,7 @@ from telebot import types
 
 # --- CONFIGURATION ---
 # Is line ko aise hi rehne dein, ye safe hai.
-API_TOKEN = os.getenv('API_TOKEN') 
+API_TOKEN = os.getenv('API_TOKEN')
 
 # Apne channel ki ID yahan likhein (Example: -1001234567890)
 CHANNEL_ID = -100123456789 
