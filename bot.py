@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv() 
 API_TOKEN = os.getenv('BOT_TOKEN')
 
-# Apne channel ki ID yahan likhein (Example: -1001234567890)
-CHANNEL_ID = -100123456789 
+# Apne channel ki ID yahan likhein
+CHANNEL_ID = -100351909661 
 
 # Apne channel ka invite link yahan paste karein
 CHANNEL_LINK = 'https://t.me/+G9R7JhWDN28zYzQ1' 
@@ -21,7 +21,6 @@ if not API_TOKEN:
 
 bot = telebot.TeleBot(API_TOKEN)
 
-# Membership check function
 def is_subscribed(user_id):
     try:
         status = bot.get_chat_member(CHANNEL_ID, user_id).status
@@ -29,9 +28,9 @@ def is_subscribed(user_id):
     except Exception:
         return False
 
-# Join request message
 def send_join_request(chat_id):
     markup = types.InlineKeyboardMarkup()
+    # Button ki indentation dhyan se dekhein
     btn1 = types.InlineKeyboardButton("Join Channel", url=CHANNEL_LINK)
     btn2 = types.InlineKeyboardButton("🔄 I have joined", callback_data="check_join")
     markup.add(btn1)
@@ -58,7 +57,7 @@ def start_cmd(message):
             encoded_id = text[1]
             file_id = base64.b64decode(encoded_id.encode()).decode()
             bot.send_document(message.chat.id, file_id, caption="File retrieved! ✅")
-        except Exception:
+        except:
             bot.reply_to(message, "Invalid link.")
     else:
         bot.reply_to(message, "Welcome! Send /store to generate a file link.")
